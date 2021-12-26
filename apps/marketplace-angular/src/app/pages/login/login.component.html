@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<div class="wrapper-main">
+  <form class="wrapper-form">
+    <div class="form-input-wrapper">
+      <label for="email">Enter e-mail</label>
+      <input
+        name="email"
+        type="email"
+        id="email"
+        class="form-control form-field"
+      />
+    </div>
+
+    <div class="form-input-wrapper">
+      <label for="password">Enter password</label>
+      <input
+        name="password"
+        type="password"
+        id="password"
+        class="form-control form-field"
+      />
+    </div>
+
+    <app-button
+      [buttonSizeType]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY"
+      type="button"
+      title="Sign in"
+      class="btn-signin"
+      (btnClicked)="signinBtnClicked()"
+    ></app-button>
+
+    <app-button
+      [buttonSizeType]="buttonTypes.SECONDARY"
+      [colorTheme]="colorThemes.SECONDARY_ACCENT"
+      type="button"
+      title="Forgot Password"
+      class="btn-forgot-password"
+    ></app-button>
+
+    <app-button
+      [buttonSizeType]="buttonTypes.SECONDARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      type="button"
+      title="Already have an account? Sign up"
+      class="btn-signup"
+    ></app-button>
+  </form>
+</div>

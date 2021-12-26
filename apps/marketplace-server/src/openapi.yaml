@@ -1,0 +1,132 @@
+openapi: 3.0.0
+servers:
+  - description: Local Server
+    url: http://localhost:3000/api/v1
+
+info:
+  description: Marketplace Rest API
+  version: "1.0.0"
+  title: Marketplace Rest API
+  contact:
+    email: techtacious@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: auth
+    description: Authentication
+  - name: user
+    description: User
+
+paths:
+  /auth/login:
+    get:
+      tags:
+        - auth
+      summary: Login User
+      operationId: login
+      description: Login User
+      parameters:
+        - in: query
+          name: email
+          schema: 
+            type: string
+          example: johndoe@email.com
+          description: User email address
+        - in: query
+          name: password
+          schema: 
+            type: string
+          example: test
+          description: User password
+      responses:
+        '200':
+          description: Logged in User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthLoginResponse'   
+        '400':
+          description: Bad request data
+        '500':
+          description: Internal Server Error
+
+  /user/:
+    get:
+      tags:
+        - user
+      security:
+        - bearerAuth: []  
+      summary: Get List of Users
+      operationId: getUsers
+      description: Get List of all Users
+      responses:
+        '200':
+          description: List of Users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - user
+      summary: Creates a new User
+      operationId: newUser
+      description: Create a new User
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Bad request data
+        '409':
+          description: An existing User already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User to create
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 'abcd'
+          readOnly: true
+        firstName:
+          type: string
+          example: 'John'
+        lastName:
+          type: string
+          example: 'Doe'
+        email:
+          type: string
+          example: 'johndoe@email.com'
+        password:
+          type: string
+          example: 'test'
+        phone:
+          type: string
+          example: '+16626622666'
+
+    AuthLoginResponse:
+        type: object
+        properties:
+          user:
+            $ref: '#/components/schemas/User'
+          token:
+            type: string
+            description: JWT Token

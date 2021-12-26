@@ -14,12 +14,14 @@
     }
   ],
   "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "es2020",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
+    "strict": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,    
+    "experimentalDecorators": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

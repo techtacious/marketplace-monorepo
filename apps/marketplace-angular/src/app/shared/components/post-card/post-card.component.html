@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="wrapper-title">
+    <span class="text-headline text-title">{{ post?.title }}</span>
+
+    <div *ngIf="date" class="wrapper-dates">
+      <div class="wrapper-calendar-icon">
+        <div class="calendar-header">{{ date.month }}</div>
+        <div class="calendar-body">{{ date.dayOfMonth }}</div>
+      </div>
+    </div>
+
+    <div *ngIf="startDate && endDate" class="wrapper-dates">
+      <div class="wrapper-calendar-icon">
+        <div class="calendar-header">{{ startDate.month }}</div>
+        <div class="calendar-body">{{ startDate.dayOfMonth }}</div>
+      </div>
+      <span> - </span>
+      <div class="wrapper-calendar-icon">
+        <div class="calendar-header">{{ endDate.month }}</div>
+        <div class="calendar-body">{{ endDate.dayOfMonth }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper-activity-content">
+    <div class="wrapper-activity-info">
+      <span class="text-primary">{{ post?.caption }}</span>
+      <div class="wrapper-location">
+        <img class="img-marker" src="../../../../assets/icons/marker.png" />
+        <span class="text-caption text-location"
+          >{{ post?.location?.city }}, {{ post?.location?.postal }}</span
+        >
+      </div>
+      <div class="wrapper-poster">
+        <img class="img-poster" src="../../../../assets/henry.jpeg" />
+        <span class="text-primary text-poster">John Doe</span>
+      </div>
+    </div>
+  </div>
+</div>

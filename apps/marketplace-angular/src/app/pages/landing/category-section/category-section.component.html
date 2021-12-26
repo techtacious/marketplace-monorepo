@@ -1,0 +1,14 @@
+<div class="section-category">
+  <span class="text-category-title">{{ category?.name }}</span>
+  <app-button
+    [type]="buttonTypes.SECONDARY"
+    [colorTheme]="colorThemes.SECONDARY_ACCENT"
+    title="See all >"
+  ></app-button>
+</div>
+<div class="wrapper-list">
+  <app-post-card
+    *ngFor="let post of category?.posts"
+    [post]="post"
+  ></app-post-card>
+</div>

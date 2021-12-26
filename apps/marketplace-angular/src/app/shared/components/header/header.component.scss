@@ -1,0 +1,19 @@
+.wrapper {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  height: fit-content;
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .buttons-wrapper {
+    app-button {
+      margin: 10px;
+    }
+  }
+}

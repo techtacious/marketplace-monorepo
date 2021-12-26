@@ -1,0 +1,39 @@
+button {
+  background: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+
+  &.type_primary {
+    font-size: 16px;
+  }
+
+  &.type_secondary {
+    font-size: 13px;
+  }
+
+  &.theme_primary {
+    background: rgb(253, 112, 20);
+    color: white;
+  }
+
+  &.theme_primary_accent {
+    background: white;
+    color: rgb(253, 112, 20);
+  }
+
+  &.theme_secondary {
+    background: green;
+    color: white;
+  }
+
+  &.theme_secondary_accent {
+    background: white;
+    color: green;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

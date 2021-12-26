@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="wrapper-search">
+  <span class="text-headline">What are you looking for?</span>
+  <input type="text" class="form-control" placeholder="monitor" />
+</div>
+
+<div class="wrapper-categories">
+  <app-category-section
+    *ngFor="let category of categories"
+    [category]="category"
+  ></app-category-section>
+</div>

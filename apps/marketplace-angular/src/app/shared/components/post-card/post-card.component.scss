@@ -1,0 +1,100 @@
+.wrapper {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  width: 420px;
+  box-shadow: 0.5px 0.5px 4px 0px grey;
+
+  .wrapper-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .text-title {
+      color: rgb(253, 112, 20);
+    }
+
+    .wrapper-dates {
+      margin-top: 10px;
+
+      .wrapper-calendar-icon {
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid lightgray;
+        width: 40px;
+        font-size: 12px;
+
+        .calendar-header {
+          background: rgb(253, 112, 20);
+          padding: 4px;
+          color: white;
+          text-align: center;
+        }
+
+        .calendar-body {
+          text-align: center;
+          height: 20px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .wrapper-activity-content {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+
+    .img-activity {
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      object-fit: cover;
+      box-shadow: 1px 1px 4px 1px grey;
+    }
+  }
+
+  .wrapper-activity-info {
+    padding: 10px;
+
+    .wrapper-location {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+
+      .img-marker {
+        height: 15px;
+        width: 15px;
+        object-fit: cover;
+      }
+
+      .text-location {
+        padding-left: 10px;
+      }
+    }
+
+    .wrapper-poster {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+
+      .img-poster {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+      }
+
+      .text-poster {
+        font-weight: bold;
+        color: green;
+        padding-left: 10px;
+      }
+    }
+  }
+}

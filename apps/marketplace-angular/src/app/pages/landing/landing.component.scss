@@ -1,0 +1,24 @@
+.wrapper-search {
+  margin-top: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .text-search {
+    display: block;
+  }
+
+  input {
+    margin-top: 15px;
+    width: 450px;
+    max-width: 80%;
+    font-style: italic;
+  }
+}
+
+.wrapper-categories {
+  margin-top: 20px;
+  padding: 25px;
+}

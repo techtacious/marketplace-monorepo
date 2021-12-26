@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "strict": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@bu/shared": ["src/shared/index.ts"],
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": ["src/**/*", "app.ts", "scripts/**/*"]
+}

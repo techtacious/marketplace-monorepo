@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-headline {
+  font-size: 16px;
+  color: #3e3d3d;
+  font-weight: bold;
+}
+
+.text-primary {
+  font-size: 14px;
+  color: #3e3d3d;
+}
+
+.text-caption {
+  font-size: 13px;
+  color: #918f8f;
+}
+
+.form-input-wrapper {
+  text-align: left;
+
+  label {
+    color: #918f8f;
+  }
+
+  input {
+    margin-top: 15px;
+  }
+}
+
+.form-control {
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  display: block;
+  min-width: 45px;
+  width: 60px;
+}

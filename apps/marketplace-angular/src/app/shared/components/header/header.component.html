@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="logo" (click)="navigate('/')">
+    <app-logo></app-logo>
+  </div>
+  <div class="buttons-wrapper">
+    <app-button
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      title="Home"
+      (click)="navigate('/')"
+    ></app-button>
+    <app-button
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      title="Sign-in"
+      (click)="navigate('/signin')"
+    ></app-button>
+    <app-button
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      title="About"
+      (click)="navigate('/about')"
+    ></app-button>
+    <app-button
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      title="Contact Us"
+      (click)="navigate('/contact')"
+    ></app-button>
+  </div>
+</div>

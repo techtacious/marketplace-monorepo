@@ -1,0 +1,24 @@
+.section-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .text-category-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.wrapper-list {
+  padding: 15px;
+  display: flex;
+  overflow-x: scroll;
+
+  app-post-card {
+    margin-top: 15px;
+    display: inline-block;
+    margin: 15px;
+  }
+}
