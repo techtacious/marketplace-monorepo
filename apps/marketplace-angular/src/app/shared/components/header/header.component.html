@@ -7,25 +7,39 @@
       [type]="buttonTypes.PRIMARY"
       [colorTheme]="colorThemes.PRIMARY_ACCENT"
       title="Home"
-      (click)="navigate('/')"
+      (btnClicked)="navigate('/')"
     ></app-button>
     <app-button
+      *ngIf="!(jwtToken$ | async)"
       [type]="buttonTypes.PRIMARY"
       [colorTheme]="colorThemes.PRIMARY_ACCENT"
       title="Sign-in"
-      (click)="navigate('/signin')"
+      (btnClicked)="navigate('/signin')"
     ></app-button>
     <app-button
       [type]="buttonTypes.PRIMARY"
       [colorTheme]="colorThemes.PRIMARY_ACCENT"
       title="About"
-      (click)="navigate('/about')"
+      (btnClicked)="navigate('/about')"
     ></app-button>
     <app-button
       [type]="buttonTypes.PRIMARY"
       [colorTheme]="colorThemes.PRIMARY_ACCENT"
       title="Contact Us"
-      (click)="navigate('/contact')"
+      (btnClicked)="navigate('/contact')"
+    ></app-button>
+    <app-button
+      *ngIf="jwtToken$ | async"
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      [title]="(user$ | async)?.firstName"
+    ></app-button>
+    <app-button
+      *ngIf="jwtToken$ | async"
+      [type]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY_ACCENT"
+      title="Sign Out"
+      (btnClicked)="signOutClicked()"
     ></app-button>
   </div>
 </div>

@@ -7,6 +7,8 @@ import {
   User,
 } from '@marketplace-monorepo/openapi';
 import { ButtonType, ColorTheme } from '../../shared/enums';
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../../state/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -19,19 +21,16 @@ export class LoginComponent implements OnInit {
 
   user: User = {};
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {}
 
   async signinBtnClicked(): Promise<any> {
-    this.authService.login(this.user.email, this.user.password).subscribe(
-      (response: AuthLoginResponse) => {
-        alert('Login Successful!' + response.user.firstName);
-        this.router.navigateByUrl('/');
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    const credentials = {
+      email: this.user.email,
+      password: this.user.password,
+    };
+
+    this.store.dispatch(AuthActions.loginRequest({ credentials }));
   }
 }

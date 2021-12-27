@@ -9,6 +9,11 @@ import {
   ConfigurationParameters,
 } from '@marketplace-monorepo/openapi';
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth/auth.effects';
+import { authReducer } from './state/auth/auth.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const configurationFactory = () => {
   const configParams: ConfigurationParameters = {
@@ -23,6 +28,11 @@ const configurationFactory = () => {
     AppRoutingModule,
     HttpClientModule,
     ApiModule.forRoot(configurationFactory),
+    StoreModule.forRoot({ auth: authReducer }),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
