@@ -1,15 +1,15 @@
-import { HttpStatusCodes, ResponsePayload } from "@bu/shared";
-import { UpdateProfileRequest } from "../definitions/update-profile-request.definition";
-import { Profile } from "../models/profile";
-import { User, IUser, UserModelInterface } from "../models/user.model";
-import { UserRepository } from "../repositories/user.repository";
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const fs = require("fs");
-const multer = require("multer");
-const AWS = require("aws-sdk");
-const path = require("path");
-
+import { HttpStatusCodes, ResponsePayload } from '@bu/shared';
+import { UpdateProfileRequest } from '../definitions/update-profile-request.definition';
+import { Profile } from '../models/profile';
+import { User, IUser, UserModelInterface } from '../models/user.model';
+import { UserRepository } from '../repositories/user.repository';
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const fs = require('fs');
+const multer = require('multer');
+const AWS = require('aws-sdk');
+const path = require('path');
+const awsCredFile = require('../../../../configs/aws-config.js');
 export class UserService {
   public static userRepository: UserRepository = new UserRepository();
 
@@ -17,7 +17,7 @@ export class UserService {
     if (!id) {
       return Promise.resolve({
         code: HttpStatusCodes.BAD_REQUEST,
-        payload: "Invalid ID",
+        payload: 'Invalid ID',
       });
     }
 
@@ -28,7 +28,7 @@ export class UserService {
       if (!user) {
         return Promise.resolve({
           code: HttpStatusCodes.NOT_FOUND,
-          payload: "User not found",
+          payload: 'User not found',
         });
       }
 
@@ -93,7 +93,7 @@ export class UserService {
     if (!phone) {
       return Promise.resolve({
         code: HttpStatusCodes.BAD_REQUEST,
-        payload: "Missing phone",
+        payload: 'Missing phone',
       });
     }
 
@@ -104,7 +104,7 @@ export class UserService {
       if (!user) {
         return Promise.resolve({
           code: HttpStatusCodes.NOT_FOUND,
-          payload: "User not found",
+          payload: 'User not found',
         });
       }
 
@@ -129,7 +129,7 @@ export class UserService {
   }
 
   public static async newUser(userPayload: IUser): Promise<ResponsePayload> {
-    console.log("newUser req: ", userPayload);
+    console.log('newUser req: ', userPayload);
     delete userPayload._id;
 
     try {
@@ -179,11 +179,11 @@ export class UserService {
   }
 
   public static async updateUser(userPayload: IUser) {
-    console.log("updateUser req: ", userPayload);
+    console.log('updateUser req: ', userPayload);
     if (!userPayload._id) {
       return Promise.resolve({
         code: HttpStatusCodes.BAD_REQUEST,
-        payload: "Invalid User ID",
+        payload: 'Invalid User ID',
       });
     }
 
@@ -192,7 +192,7 @@ export class UserService {
     if (!user) {
       return Promise.resolve({
         code: HttpStatusCodes.NOT_FOUND,
-        payload: "User not found",
+        payload: 'User not found',
       });
     } else {
       const user = await this.userRepository.update(userPayload);
@@ -205,7 +205,7 @@ export class UserService {
   }
 
   public static async setProfilePhoto(userId: string, files) {
-    console.log("Files in req: ", files);
+    console.log('Files in req: ', files);
     // console.log('request: ', req);
 
     let user: IUser;
@@ -216,40 +216,41 @@ export class UserService {
     if (!user) {
       return Promise.resolve({
         code: HttpStatusCodes.NOT_FOUND,
-        payload: "User not found",
+        payload: 'User not found',
       });
     }
 
     if (!files || files.length < 1) {
       return Promise.resolve({
         code: HttpStatusCodes.BAD_REQUEST,
-        payload: "No file received",
+        payload: 'No file received',
       });
     }
 
-    const awsCredFile = path.join(__dirname, "../", "configs/aws-config.json");
+    //TODO: This might be needed / fixed to make AWS operations work properly.
+    // const awsCredFile = path.join(__dirname, "../", "configs/aws-config.json");
 
-    console.log("awsCredFile is");
+    console.log('awsCredFile is');
     console.log(awsCredFile);
 
     AWS.config.loadFromPath(awsCredFile);
 
     const s3 = new AWS.S3();
 
-    const photoBucket = new AWS.S3({ params: { Bucket: "true-ishq-media" } });
+    const photoBucket = new AWS.S3({ params: { Bucket: 'true-ishq-media' } });
 
     const filePathToSend = files[0].path;
 
     function uploadToS3(filepath, destFileName, callback) {
       photoBucket
         .upload({
-          ACL: "public-read",
+          ACL: 'public-read',
           Body: fs.createReadStream(filepath),
           Key: destFileName.toString(),
-          ContentType: "application/octet-stream", // force download if it's accessed as a top location
+          ContentType: 'application/octet-stream', // force download if it's accessed as a top location
         })
         // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3/ManagedUpload.html#httpUploadProgress-event
-        .on("httpUploadProgress", function (evt) {
+        .on('httpUploadProgress', function (evt) {
           console.log(evt);
         })
         // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3/ManagedUpload.html#send-property
@@ -258,22 +259,22 @@ export class UserService {
 
     multer({ limits: { fileSize: 10 * 1024 * 1024 } });
 
-    console.log("filePathToSend is ");
+    console.log('filePathToSend is ');
     console.log(filePathToSend);
 
     uploadToS3(
       filePathToSend,
-      files[0].filename + ".jpg",
+      files[0].filename + '.jpg',
       async (err, data) => {
         if (err) {
           console.error(err);
           return Promise.resolve({
             code: HttpStatusCodes.INTERNAL_SERVER_ERROR,
-            payload: "Failed to upload to S3",
+            payload: 'Failed to upload to S3',
           });
         }
 
-        const pictureUrl = data.Location.replace(/"/g, "&quot;");
+        const pictureUrl = data.Location.replace(/"/g, '&quot;');
 
         user.profilePic = pictureUrl;
 
@@ -296,17 +297,17 @@ export class UserService {
         // const updatedUser = await user.save();
 
         console.log(
-          "responding to client with url: ",
-          data.Location.replace(/"/g, "&quot;")
+          'responding to client with url: ',
+          data.Location.replace(/"/g, '&quot;')
         );
 
         return Promise.resolve({
           code: HttpStatusCodes.OK,
-          payload: data.Location.replace(/"/g, "&quot;"),
+          payload: data.Location.replace(/"/g, '&quot;'),
         });
       }
     );
 
-    console.log("uploading now...");
+    console.log('uploading now...');
   }
 }
