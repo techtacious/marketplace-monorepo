@@ -1,6 +1,154 @@
 {
   "version": 1,
   "projects": {
+    "component-lib": {
+      "projectType": "library",
+      "root": "libs/component-lib",
+      "sourceRoot": "libs/component-lib/src",
+      "prefix": "marketplace-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/component-lib"],
+          "options": {
+            "jestConfig": "libs/component-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/component-lib/src/**/*.ts",
+              "libs/component-lib/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "component-lib-demo": {
+      "projectType": "application",
+      "root": "apps/component-lib-demo",
+      "sourceRoot": "apps/component-lib-demo/src",
+      "prefix": "marketplace-monorepo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/component-lib-demo",
+            "index": "apps/component-lib-demo/src/index.html",
+            "main": "apps/component-lib-demo/src/main.ts",
+            "polyfills": "apps/component-lib-demo/src/polyfills.ts",
+            "tsConfig": "apps/component-lib-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/component-lib-demo/src/favicon.ico",
+              "apps/component-lib-demo/src/assets"
+            ],
+            "styles": ["apps/component-lib-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/component-lib-demo/src/environments/environment.ts",
+                  "with": "apps/component-lib-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "component-lib-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "component-lib-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "component-lib-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/component-lib-demo/src/**/*.ts",
+              "apps/component-lib-demo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/component-lib-demo"],
+          "options": {
+            "jestConfig": "apps/component-lib-demo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "component-lib-demo-e2e": {
+      "root": "apps/component-lib-demo-e2e",
+      "sourceRoot": "apps/component-lib-demo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/component-lib-demo-e2e/cypress.json",
+            "devServerTarget": "component-lib-demo:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "component-lib-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/component-lib-demo-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["component-lib-demo"]
+    },
     "marketplace-angular": {
       "projectType": "application",
       "root": "apps/marketplace-angular",

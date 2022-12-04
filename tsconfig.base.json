@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@marketplace-monorepo/component-lib": [
+        "libs/component-lib/src/index.ts"
+      ],
       "@marketplace-monorepo/openapi": ["libs/openapi/src/index.ts"]
     }
   },
