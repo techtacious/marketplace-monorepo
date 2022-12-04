@@ -11,7 +11,7 @@
     "dev": "nodemon -r tsconfig-paths/register app.ts dotenv/config app.ts",
     "prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/app.js",
     "build": "tsc",
-    "openapi-generate:client": "npx ts-node scripts/openapi-generate-client.ts"
+    "openapi-generate:client": "npx ts-node src/scripts/openapi-generate-client.ts"
   },
   "author": "",
   "license": "ISC",
