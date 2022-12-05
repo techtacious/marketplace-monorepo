@@ -23,8 +23,8 @@ export class LandingComponent implements OnInit {
       {
         _id: 'bikePost',
         title: 'Road Bike',
-        caption: `Let's go biking in the beautiful trails of Vancouver!`,
-        description: `Let's go biking in the beautiful trails of Vancouver!`,
+        caption: `Selling this product in excellent condition`,
+        description: `Selling this product in excellent condition`,
         date: '2022-01-08',
         location: {
           lat: 45,
@@ -37,8 +37,8 @@ export class LandingComponent implements OnInit {
       {
         _id: 'tennisPost',
         title: 'iPhone 12 Pro Max',
-        caption: `Looking for a buddy to play tennis with in North Vancouver.`,
-        description: `Looking for a buddy to play tennis with in North Vancouver.`,
+        caption: `Selling this product in excellent condition`,
+        description: `Selling this product in excellent condition`,
         date: '2022-01-12',
         location: {
           lat: 45,
@@ -51,8 +51,8 @@ export class LandingComponent implements OnInit {
       {
         _id: 'tennisPost',
         title: 'Graphic Card nVIDIA RTX 3080',
-        caption: `Looking for a buddy to play tennis with in North Vancouver.`,
-        description: `Looking for a buddy to play tennis with in North Vancouver.`,
+        caption: `Selling this product in excellent condition`,
+        description: `Selling this product in excellent condition`,
         date: '2022-01-12',
         location: {
           lat: 45,
@@ -65,8 +65,8 @@ export class LandingComponent implements OnInit {
       {
         _id: 'tennisPost',
         title: 'Msi 144Hz Monitor',
-        caption: `Looking for a buddy to play tennis with in North Vancouver.`,
-        description: `Looking for a buddy to play tennis with in North Vancouver.`,
+        caption: `Selling this product in excellent condition`,
+        description: `Selling this product in excellent condition`,
         date: '2022-01-12',
         location: {
           lat: 45,
@@ -79,8 +79,8 @@ export class LandingComponent implements OnInit {
       {
         _id: 'tennisPost',
         title: 'Blue Yeti Microphone',
-        caption: `Looking for a buddy to play tennis with in North Vancouver.`,
-        description: `Looking for a buddy to play tennis with in North Vancouver.`,
+        caption: `Selling this product in excellent condition`,
+        description: `Selling this product in excellent condition`,
         date: '2022-01-12',
         location: {
           lat: 45,
