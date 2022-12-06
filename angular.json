@@ -1,6 +1,48 @@
 {
   "version": 1,
   "projects": {
+    "component-lib": {
+      "projectType": "library",
+      "root": "libs/component-lib",
+      "sourceRoot": "libs/component-lib/src",
+      "prefix": "marketplace-monorepo",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/component-lib"],
+          "options": {
+            "project": "libs/component-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/component-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/component-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/component-lib"],
+          "options": {
+            "jestConfig": "libs/component-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/component-lib/src/**/*.ts",
+              "libs/component-lib/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "marketplace-angular": {
       "projectType": "application",
       "root": "apps/marketplace-angular",
