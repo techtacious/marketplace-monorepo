@@ -14,6 +14,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './state/auth/auth.effects';
 import { authReducer } from './state/auth/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { userReducer } from './state/user/user.reducer';
+import { UserEffects } from './state/user/user.effects';
 
 const configurationFactory = () => {
   const configParams: ConfigurationParameters = {
@@ -28,8 +30,8 @@ const configurationFactory = () => {
     AppRoutingModule,
     HttpClientModule,
     ApiModule.forRoot(configurationFactory),
-    StoreModule.forRoot({ auth: authReducer }),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forRoot({ auth: authReducer, user: userReducer }),
+    EffectsModule.forRoot([AuthEffects, UserEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),

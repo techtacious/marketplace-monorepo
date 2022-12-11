@@ -1,0 +1,43 @@
+.wrapper-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 1px solid gray;
+  border-radius: 5px;
+  padding: 20px;
+
+  .wrapper-form {
+    text-align: center;
+
+    .form-field {
+      width: 450px;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .form-input-wrapper {
+      margin: 15px;
+    }
+
+    .btn-update {
+      margin-top: 30px;
+      display: block;
+    }
+
+    ::ng-deep .btn-forgot-password {
+      margin-top: 15px;
+      display: block;
+
+      button {
+        text-decoration: underline;
+      }
+    }
+
+    .btn-signup {
+      margin-top: 15px;
+      display: block;
+    }
+  }
+}

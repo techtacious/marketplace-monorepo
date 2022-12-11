@@ -5,7 +5,7 @@ servers:
 
 info:
   description: Marketplace Rest API
-  version: "1.0.0"
+  version: '1.0.0'
   title: Marketplace Rest API
   contact:
     email: techtacious@gmail.com
@@ -29,13 +29,13 @@ paths:
       parameters:
         - in: query
           name: email
-          schema: 
+          schema:
             type: string
           example: johndoe@email.com
           description: User email address
         - in: query
           name: password
-          schema: 
+          schema:
             type: string
           example: test
           description: User password
@@ -45,7 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthLoginResponse'   
+                $ref: '#/components/schemas/AuthLoginResponse'
         '400':
           description: Bad request data
         '500':
@@ -56,7 +56,7 @@ paths:
       tags:
         - user
       security:
-        - bearerAuth: []  
+        - bearerAuth: []
       summary: Get List of Users
       operationId: getUsers
       description: Get List of all Users
@@ -90,13 +90,30 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
         description: User to create
+    patch:
+      tags:
+        - user
+      summary: Updates a User
+      operationId: updateUser
+      description: Update a User
+      responses:
+        '201':
+          description: User updated
+        '400':
+          description: Bad request data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Updated User
 
 components:
   securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
+    bearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
-      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
 
   schemas:
     User:
@@ -123,10 +140,10 @@ components:
           example: '+16626622666'
 
     AuthLoginResponse:
-        type: object
-        properties:
-          user:
-            $ref: '#/components/schemas/User'
-          token:
-            type: string
-            description: JWT Token
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        token:
+          type: string
+          description: JWT Token

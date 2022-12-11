@@ -2,6 +2,7 @@ import { User } from '@marketplace-monorepo/openapi';
 import { createReducer, on } from '@ngrx/store';
 import { loginFailure, loginSuccess, logout } from './auth.actions';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { updateUserSuccess } from '../user/user.actions';
 
 export interface State {
   token: string;
@@ -36,6 +37,12 @@ const _authReducer = createReducer(
       ...state,
       token: null,
       user: null,
+    };
+  }),
+  on(updateUserSuccess, (state, { user }) => {
+    return {
+      ...state,
+      user: user,
     };
   })
 );

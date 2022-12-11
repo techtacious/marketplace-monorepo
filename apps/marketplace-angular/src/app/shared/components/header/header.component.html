@@ -33,6 +33,7 @@
       [type]="buttonTypes.PRIMARY"
       [colorTheme]="colorThemes.PRIMARY_ACCENT"
       [title]="(user$ | async)?.firstName"
+      (btnClicked)="navigate('/profile')"
     ></app-button>
     <app-button
       *ngIf="jwtToken$ | async"

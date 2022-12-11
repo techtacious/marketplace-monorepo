@@ -1,6 +1,6 @@
-import { UpdateWriteOpResult } from "mongoose";
-import { Profile } from "../models/profile";
-import { IUser, User, UserModelInterface } from "../models/user.model";
+import { UpdateWriteOpResult } from 'mongoose';
+import { Profile } from '../models/profile';
+import { IUser, User, UserModelInterface } from '../models/user.model';
 
 export class UserRepository {
   /**
@@ -21,23 +21,23 @@ export class UserRepository {
   }
 
   async findById(id: string): Promise<IUser> {
-    const result = await User.findById(id).populate("profile").exec();
+    const result = await User.findById(id).populate('profile').exec();
     return result;
   }
 
   async findByEmail(email: string): Promise<IUser> {
-    const result = await User.findOne({ email }).populate("profile").exec();
-    console.log("result from findByEmail: ", result);
+    const result = await User.findOne({ email }).populate('profile').exec();
+    console.log('result from findByEmail: ', result);
     return result;
   }
 
   async findbyPhone(phone: string): Promise<IUser> {
-    const result = await User.findOne({ phone }).populate("profile").exec();
+    const result = await User.findOne({ phone }).populate('profile').exec();
     return result;
   }
 
   async findAll(): Promise<IUser[]> {
-    const results = await User.find({}).populate("profile").exec();
+    const results = await User.find({}).populate('profile').exec();
     return results;
   }
 
@@ -45,7 +45,10 @@ export class UserRepository {
     const updateDoc = {
       $set: user,
     };
-    const result = await User.updateOne({ _id: user._id }, updateDoc);
+    const result = await User.findByIdAndUpdate(user._id, updateDoc, {
+      lean: true,
+      new: true,
+    });
     return result;
   }
 

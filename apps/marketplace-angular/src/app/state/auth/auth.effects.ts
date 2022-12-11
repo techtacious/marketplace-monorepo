@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@marketplace-monorepo/openapi';
+import { AuthService, UserService } from '@marketplace-monorepo/openapi';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, of, exhaustMap, map, tap } from 'rxjs';
 import * as AuthActions from './auth.actions';
@@ -42,6 +42,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 }

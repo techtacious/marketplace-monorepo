@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="wrapper-main">
+  <form class="wrapper-form">
+    <div class="form-input-wrapper">
+      <label for="firstName">First Name</label>
+      <input
+        name="firstName"
+        type="text"
+        id="firstName"
+        class="form-control form-field"
+        [(ngModel)]="updatedUser.firstName"
+        (ngModelChange)="handleInputChange($event, 'firstName')"
+      />
+    </div>
+
+    <div class="form-input-wrapper">
+      <label for="lastName">Last Name</label>
+      <input
+        name="lastName"
+        type="text"
+        id="lastName"
+        class="form-control form-field"
+        [(ngModel)]="updatedUser.lastName"
+        (ngModelChange)="handleInputChange($event, 'lastName')"
+      />
+    </div>
+
+    <div *ngIf="userState$ | async" class="form-input-wrapper">
+      <p style="color: red; text-align: center">
+        {{ (userState$ | async)?.updateUserError }}
+      </p>
+    </div>
+
+    <app-button
+      [buttonSizeType]="buttonTypes.PRIMARY"
+      [colorTheme]="colorThemes.PRIMARY"
+      type="button"
+      title="Update Profile"
+      class="btn-update"
+      (btnClicked)="updateBtnClicked()"
+    ></app-button>
+  </form>
+</div>

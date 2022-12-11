@@ -2067,19 +2067,17 @@
     "webpack-merge" "^5.8.0"
     "webpack-node-externals" "^3.0.0"
 
-"@nrwl/nx-cloud@latest":
-  "integrity" "sha512-DaTASuXmGyQHMxJuK6y3f7fs+Q0qQCfYDIDVGK9muNwN/QItLeWdRNltLQxbrBeS112kQTu2FPsr0DmRD60+0A=="
-  "resolved" "https://registry.npmjs.org/@nrwl/nx-cloud/-/nx-cloud-15.0.2.tgz"
-  "version" "15.0.2"
+"@nrwl/nx-cloud@^13.1.6":
+  "integrity" "sha512-p/Iybpvixywm2iSFb6tcNde8BAIYFbzowhsNwDOuEVy7s9y9v/bEvCdT14VF6SxWrcGylyXo8A98Yyg0hsr0zQ=="
+  "resolved" "https://registry.npmjs.org/@nrwl/nx-cloud/-/nx-cloud-13.1.6.tgz"
+  "version" "13.1.6"
   dependencies:
-    "axios" "^0.21.2"
+    "axios" "^0.21.1"
     "chalk" "4.1.0"
-    "dotenv" "~10.0.0"
-    "fs-extra" "^10.1.0"
     "node-machine-id" "^1.1.12"
+    "rxjs" "6.5.5"
     "strip-json-comments" "^3.1.1"
     "tar" "6.1.11"
-    "yargs-parser" ">=21.0.1"
 
 "@nrwl/storybook@13.4.0":
   "integrity" "sha512-Fj8QJZhhvCqjI7ZfVrVB0QWxAJP7eWeTzJBmj5T1nKPamo7mgUTg8XIc7zSqRWL1P9crl/X1ct5ev4xhYkUf/w=="
@@ -3055,7 +3053,7 @@
   "resolved" "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   "version" "1.11.0"
 
-"axios@^0.21.2":
+"axios@^0.21.1":
   "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
   "version" "0.21.4"
@@ -5101,15 +5099,6 @@
   "integrity" "sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac="
   "resolved" "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz"
   "version" "0.5.2"
-
-"fs-extra@^10.1.0":
-  "integrity" "sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ=="
-  "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-10.1.0.tgz"
-  "version" "10.1.0"
-  dependencies:
-    "graceful-fs" "^4.2.0"
-    "jsonfile" "^6.0.1"
-    "universalify" "^2.0.0"
 
 "fs-extra@^9.0.0", "fs-extra@^9.1.0":
   "integrity" "sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ=="
@@ -9020,6 +9009,13 @@
   dependencies:
     "tslib" "^2.1.0"
 
+"rxjs@6.5.5":
+  "integrity" "sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ=="
+  "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-6.5.5.tgz"
+  "version" "6.5.5"
+  dependencies:
+    "tslib" "^1.9.0"
+
 "rxjs@6.6.7":
   "integrity" "sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ=="
   "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-6.6.7.tgz"
@@ -10565,11 +10561,6 @@
   "integrity" "sha512-z9kApYUOCwoeZ78rfRYYWdiU/iNL6mwwYlkkZfJoyMR1xps+NEBX5X7XmRpxkZHhXJ6+Ey00IwKxBBSW9FIjyA=="
   "resolved" "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.0.0.tgz"
   "version" "21.0.0"
-
-"yargs-parser@>=21.0.1":
-  "integrity" "sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw=="
-  "resolved" "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz"
-  "version" "21.1.1"
 
 "yargs-parser@20.0.0":
   "integrity" "sha512-8eblPHTL7ZWRkyjIZJjnGf+TijiKJSwA24svzLRVvtgoi/RZiKa9fFQTrlx0OKLnyHSdt/enrdadji6WFfESVA=="

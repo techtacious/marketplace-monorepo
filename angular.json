@@ -48,6 +48,11 @@
       "root": "apps/marketplace-angular",
       "sourceRoot": "apps/marketplace-angular/src",
       "prefix": "marketplace-monorepo",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
