@@ -75,26 +75,5 @@
         padding-left: 10px;
       }
     }
-
-    .wrapper-poster {
-      display: flex;
-      padding: 10px;
-      align-items: center;
-      justify-content: flex-end;
-      cursor: pointer;
-
-      .img-poster {
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        object-fit: cover;
-      }
-
-      .text-poster {
-        font-weight: bold;
-        color: green;
-        padding-left: 10px;
-      }
-    }
   }
 }

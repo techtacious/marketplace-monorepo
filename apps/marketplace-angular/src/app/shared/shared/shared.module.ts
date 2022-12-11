@@ -4,7 +4,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { ButtonComponent } from '../components/button/button.component';
 import { LogoComponent } from '../components/logo/logo.component';
 import { PostCardComponent } from '../components/post-card/post-card.component';
-
+import { ComponentLibModule } from '@market-monorepo/component-lib';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -12,7 +12,7 @@ import { PostCardComponent } from '../components/post-card/post-card.component';
     LogoComponent,
     PostCardComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ComponentLibModule],
   exports: [HeaderComponent, ButtonComponent, LogoComponent, PostCardComponent],
 })
 export class SharedModule {}
